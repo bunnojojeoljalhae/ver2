@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 
+CREATE TABLE NOTICE(
+WRITE_NO NUMBER(10) PRIMARY KEY,
+ID VARCHAR2(15) NOT NULL,
+NICKNAME VARCHAR2(20) NOT NULL,
+TITLE VARCHAR2(30) NOT NULL,
+CONTENT VARCHAR2(1000) NOT NULL,
+VIEWS NUMBER(10) DEFAULT 0,
+WRITE_DATE DATE DEFAULT SYSDATE NOT NULL,
+IMG_NAME VARCHAR2(50),
+IDX VARCHAR2(1) NOT NULL
+);
+
+CREATE SEQUENCE NOTICE_SEQ 
+INCREMENT BY 1 
+START WITH 1 
+MAXVALUE 5000
+NOCYCLE
+NOCACHE;
+
+ALTER TABLE NOTICE ADD CONSTRAINT FK_NOTICE FOREIGN KEY(IDX) REFERENCES WRITE_GROUP(IDX) ON DELETE CASCADE;
+ -->
+
+<!-- 
+CREATE TABLE NOTICE_REPLY(
+IDX VARCHAR2(1) NOT NULL,
+REPLY_ID VARCHAR2(15) NOT NULL,
+REPLY_NICKNAME VARCHAR2(20) NOT NULL,
+REPLY VARCHAR2(500) NOT NULL,
+WRITE_DATE DATE DEFAULT SYSDATE NOT NULL,
+REPLY_NO NUMBER(10) PRIMARY KEY
+);
+
+CREATE SEQUENCE NOTICE_REPLY_SEQ 
+INCREMENT BY 1 
+START WITH 1 
+MAXVALUE 5000
+NOCYCLE
+NOCACHE;
+--> 
+ 
+<mapper namespace="com.web.honbab.mybatis.NoticeMapper">
+
+	<resultMap type="com.web.honbab.dto.AdminDTO" id="admin">
+		<id property="adminId" column="ADMIN_ID"></id>
+		<result property="adminPw" column="ADMIN_PW"></result>
+		<result property="adminNickname" column="ADMIN_NICKNAME"></result>
+		<result property="adminNo" column="ADMIN_NO"></result>
+	</resultMap>
+
+	<resultMap type="com.web.honbab.dto.NoticeDTO" id="notice">
+		<id property="writeNo" column="WRITE_NO" />
+		<result property="id" column="ID" />
+		<result property="nickName" column="NICKNAME" />		
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="views" column="VIEWS" />
+		<result property="writeDate" column="WRITE_DATE" />
+		<result property="imgName" column="IMG_NAME" />
+		<result property="idx" column="IDX" />
+	</resultMap>
+	
+	<resultMap type="com.web.honbab.dto.NoticeReplyDTO" id="noticeReply">
+		<id property="idx" column="IDX" />
+		<result property="replyId" column="REPLY_ID" />
+		<result property="replyNick" column="REPLY_NICKNAME" />
+		<result property="reply" column="REPLY" />
+		<result property="writeDate" column="WRITE_DATE" />
+		<result property="replyNo" column="REPLY_NO" />
+		<result property="writeNo" column="WRITE_NO" />
+	</resultMap>
+	
+	<!-- <select id="adminUserCheck" resultMap="adminLogin"> -->
+<!-- 	<select id="adminCheck" resultMap="adminLogin">
+		SELECT * FROM ADMIN 
+		WHERE ADMIN_ID=#{adminId}
+	</select> -->
+	
+	<select id="noticeAllList" resultMap="notice">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM NOTICE ORDER BY WRITE_NO DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
+	</select>
+	
+	<select id="noticePgCount" resultType="Integer">
+		SELECT COUNT(*) FROM
+		NOTICE
+	</select>
+
+	<select id="noticeContent" resultMap="notice">
+		SELECT * FROM NOTICE
+		WHERE WRITE_NO=#{writeNo}
+	</select>
+	
+	<insert id="saveNotice">
+		INSERT INTO NOTICE(WRITE_NO, ID, NICKNAME, TITLE, CONTENT, IMG_NAME, IDX)
+		VALUES(NOTICE_SEQ.NEXTVAL, #{id}, #{nickName}, #{title}, #{content}, #{imgName}, #{idx})
+	</insert>
+	
+	<update id="modifyNotice">
+		UPDATE NOTICE SET 
+		TITLE=#{title},
+		CONTENT=#{content},
+		IMG_NAME=#{imgName} 
+		WHERE WRITE_NO=#{writeNo}
+	</update>
+	
+	<delete id="deleteNotice">
+		DELETE FROM NOTICE
+		WHERE WRITE_NO=#{writeNo}
+	</delete>
+	
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡVIEWS ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+	<update id="upViews">
+		UPDATE NOTICE 
+		SET VIEWS=VIEWS+1 
+		WHERE WRITE_NO=#{writeNo}
+	</update> 
+		
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ search ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+	<select id="noticeSearchCount" resultType="Integer">
+		SELECT COUNT(*) FROM NOTICE 
+		WHERE TITLE=#{keyword}
+	</select>
+	
+	<select id="noticeSearch" resultMap="notice">
+		SELECT * FROM NOTICE 
+		WHERE TITLE LIKE '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>		
+	
+</mapper>

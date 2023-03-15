@@ -1,0 +1,201 @@
+@charset "UTF-8";
+
+*,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+
+/*
+----------------------------------
+    main
+----------------------------------
+*/
+
+.main {
+  width: 1720px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+/* 
+.best_wrap {
+  width: 1720px;
+  height: 400px;
+  margin: 0 auto;
+} */
+
+/*
+----------------------------------
+    header
+----------------------------------
+*/
+.head {
+  height: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Nunito Sans", sans-serif;
+/*   padding: 10px 0; */
+/*   border-top: 2px solid rgba(17, 21, 226, 0.918); */
+  color: rgb(64, 64, 64);
+}
+
+.head > a {
+  color: rgb(64, 64, 64);	
+}
+
+.eng_title {
+	font-size: 16px;
+	font-family: "Nunito Sans", sans-serif;
+}
+
+.best {
+  width: 300px;
+  height: 250px;
+  float: left;
+}
+
+/*
+----------------------------------
+   ASIDE
+----------------------------------
+*/
+
+aside {
+  width: 300px;
+  float: left;
+}
+
+.line {
+  height: 20px;
+  border-top: 1px solid rgb(89, 89, 89);
+}
+
+.text {
+	width: 200px;
+	height: 220px;
+  padding-top: 5px;
+	font-size: 14px;  
+  font-weight: 700;
+  color: rgb(64, 64, 64);
+	font-family: "Nunito Sans", sans-serif;
+}
+
+.best-title {
+	width: 200px;
+	height: 220px;
+  padding-top: 5px;
+	font-size: 14px;  
+  font-weight: 700;
+  color: rgb(64, 64, 64);
+	font-family: "Nunito Sans", sans-serif;
+}
+
+/*
+----------------------------------
+    section
+----------------------------------
+*/
+section.best-section {
+  width: 1420px;
+  float: right;
+/*   padding-top: 30px; */
+}
+
+aside {
+  width: 300px;
+  float: left;
+}
+
+.index {
+  width: 1420px;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  display: inline-block;
+  text-align: center;
+  font-size: 13px;
+  color: rgb(64, 64, 64);
+}
+
+.index li {
+  height: 30px;
+  display: inline-block;
+  text-align: center;
+  font-family: "Noto Sans KR", sans-serif;
+  padding-top: 5px;
+  font-size: 14px;
+}
+
+.no {
+  width: 80px;
+  padding: 0 15px;
+  float: left;
+  padding-top: 5px;
+}
+
+.title {
+  width: 300px;
+  margin: 0 10px;
+  float: left;
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  /* 말줄임 적용 */  
+}
+
+.title > a:hover {
+	color: rgb(240, 73, 15);
+	text-decoration: underline;
+}
+
+.date {
+  width: 150px;
+  margin: 0 10px;
+}
+
+.content {
+  width: 600px;
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  /* 말줄임 적용 */
+  float: left;
+}
+
+.writer {
+  width: 100px;
+}
+
+.view {
+  width: 80px;
+  padding: 5px 15px 0 15px;
+  float: right;
+}
+
+.go {
+  width: 80px;
+  padding: 5px 15px 0 15px;
+  float: right;
+}
+
+.content-more {
+  cursor: pointer;
+  width: 30px;
+  float: right;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 800;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.more {
+  cursor: pointer;
+  margin: 40px 0 20px;
+  width: 300px;
+  float: right;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 800;
+  font-family: "Nunito Sans", sans-serif;
+}

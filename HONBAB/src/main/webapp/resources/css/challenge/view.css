@@ -1,0 +1,283 @@
+@charset "UTF-8";
+
+*, a {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+a:link, a:visited {
+	color: rgb(34, 34, 34);
+}
+
+/*
+----------------------------------
+	스크롤 숨기기
+----------------------------------
+*/
+body {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera*/
+}
+
+.line {
+	width: 900px;
+	height: 1px;
+	color: rgb(200, 200, 200);
+}
+
+body {
+	background: url("../../img/background_img_g.jpg");
+}
+
+/*
+----------------------------------
+    main
+----------------------------------
+*/
+main.read {
+  width: 100%;
+  height: 92vh;
+  float: right;
+}
+
+.read-wrap {
+  width: 70%;
+  height: 80vh;
+  margin: 0 auto;
+  margin-top: 80px;
+/* 	border-bottom: 2px solid rgb(25, 11, 223); */
+}
+
+li.read-title {
+  height: 70px;
+  padding: 10px 4px;
+	border-bottom: 2px solid rgb(89, 89, 89);
+}
+
+li.read-title span {
+	font-size: 30px; 	
+	font-weight: 600;
+	font-family: 'Noto Sans KR', sans-serif;
+	display: inline-block;
+	color: rgba(0, 0, 0, 0.8);
+	
+}
+
+li.read-content {
+  height: 50px;
+  padding: 10px 4px;
+}
+
+li.content {
+  height: 550px;
+  border-bottom: 1px solid rgb(89, 89, 89);
+}
+
+.text {
+	height: inherit;
+}
+
+.sec-line span {
+	width:	50%;
+	display: inline-block;
+	font-weight: 500;
+  color: rgb(64, 64, 64);
+	font-family: 'Noto Sans KR', sans-serif;	
+}
+
+#write-date {
+	float: right;
+	text-align: right;
+}
+
+.text {
+	/* border: 1px solid rgb(221, 221, 221);
+  border-radius: 5px; */
+	width: 100%;
+	height: 500px;
+	float: left;
+	font-size: 16px;
+	font-weight: 400;
+	font-family: "Noto Sans KR", sans-serif;
+	line-height: 160%;
+	color: rgb(34, 34, 34);
+	overflow: auto;
+	padding: 5px;
+	border: none;
+	resize: none;
+	white-space: pre-line;
+	word-break: break-all;
+}
+
+.text:focus {
+	outline: none;
+}
+
+.text::-webkit-scrollbar {
+	display: none;
+}
+
+.title {
+	font-size: 29px;
+	font-weight: 500;
+	font-family: "Noto Sans KR", sans-serif;
+	margin-bottom: 5px;
+}
+
+#slash {
+	margin: 0 10px;
+	font-weight: 800;
+	font-family: "Nunito Sans", sans-serif;
+}
+
+.title {
+	/* margin: 0 20px; */
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.writer, .date {
+	display: inline-block;
+	padding: 10px 0;
+	color: rgb(40, 40, 40);
+	font-family: "Nunito Sans", sans-serif;
+}
+
+.writer {
+	font-size: 19px;
+	font-weight: 600;
+}
+
+.date {
+	font-size: 16px;
+	font-weight: 600;
+	position: absolute;
+	text-align: right;
+	right: 780px;
+}
+
+
+.read-btn-ul {
+	width: 100%;
+	height: 80px;
+	margin-top: 10px;
+	border-top: 1px solid rgb(220, 220, 220);	
+}
+
+.read-btn {
+	display: inline-block;
+}
+
+.text-dark {
+}
+
+.text-dark > img {
+	cursor: pointer;
+}
+
+.like-btn {
+	width: 50%;
+	height: 35px;
+	float: left;
+	margin: 20px 0;
+}
+
+.like-btn button {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.submit-btn {
+	width: 50%;
+	float: right;
+}
+
+#imgx>span {
+	width: 100px;
+	height: 250px;
+	font-weight: 500px;
+	font-size: 50px;
+	text-align: center;
+	margin: 0 auto;
+	color: rgb(40, 40, 40);
+}
+
+#imgx {
+	width: 350px;
+	height: 250px;
+	float: right;
+	display: block;
+	background-color: rgba(220, 220, 220, 0.5);
+	padding: 10px 10px;
+	font-weight: 500px;
+	font-size: 50px;
+	text-align: center;
+	margin: auto auto;
+	color: rgba(17, 21, 226, 0.918);
+}
+
+#img {
+	width: 350px;
+	height: 250px;
+	height: auto;
+	float: right;
+	display: block;
+	background-color: rgb(163, 163, 163);
+	border-radius: 5px;
+}
+
+/*
+----------------------------------
+    input button
+----------------------------------
+*/
+input[type="button" i] {
+	width: 100px;
+	height: 35px;
+	margin: 20px 0;
+	float: right;
+	background-color: rgba(245, 222, 179, 0);
+	outline: none;
+	border: none;
+	font-size: 15px;
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgb(60, 60, 60);
+	border-radius: 18px;
+	border: 1px solid rgb(89, 89, 89);
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color: rgba(230, 230, 230, 0);
+	vertical-align: middle;  
+}
+
+input[type="button" i]:hover {
+	border: 1px solid rgb(240, 73, 15);
+	color: rgb(240, 73, 15);	
+} 
+
+#delete_btn {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+/*
+----------------------------------
+  footer
+----------------------------------
+*/
+.footer {
+	position: absolute;
+	width: 100%;
+	margin: 0 auto;
+	bottom: 0;
+}
+

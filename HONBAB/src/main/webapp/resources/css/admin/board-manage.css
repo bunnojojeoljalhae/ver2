@@ -1,0 +1,395 @@
+/*
+----------------------------------
+	challenge allList
+----------------------------------
+*/
+
+@charset "UTF-8";
+
+*, a {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+a:link, a:visited {
+	color: rgb(34, 34, 34);
+}
+
+/*
+----------------------------------
+	스크롤 숨기기
+----------------------------------
+*/
+body {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+	background: url("../../img/background_img_g.jpg");
+}
+
+body::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera*/
+}
+
+main.board-manage-main {
+	width: 1200px;
+	height: 92vh;
+/* 	height: 75vh; */
+	margin: 0 auto;
+	/* background-color: rgb(245, 244, 243); */
+}
+/*
+----------------------------------
+	글 구분
+----------------------------------
+*/
+.title-board-manage {
+	position: relative;
+	width: 60%;
+	margin: 0 auto;
+	color: rgb(43, 43, 43);
+	text-align: center;
+	font-weight: 800;
+	font-size: 30px;	
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+.board-select {
+	position: absolute;
+  width: 240px;;
+	height: 30px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  top: 200px;
+  z-index: 1;
+}
+
+label {
+  width: 100%;
+  vertical-align: middle;
+  color: rgb(204, 204, 204);
+  margin-right: 15px;
+  padding: 7px 0;
+}
+
+input[type="radio" i] {
+  vertical-align: middle;
+  appearance: none;
+  border: max(1px, 0.1em) solid gray;
+  border-radius: 50%;
+  width: 1.2em;
+  height: 1.2em;
+  transition: border 0.3s ease-in-out;
+  float: left;
+}
+
+[type="radio"]:checked {
+  border: 2px solid rgb(240, 73, 15);
+  border-radius: 50%;
+}
+
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(2px, 0.2em) lightgray;
+  cursor: pointer;
+}
+
+.board-label {
+	width: 82px;
+  vertical-align: middle;
+  float: right;
+  font-size: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: left;
+}
+
+
+/*
+----------------------------------
+  section : search
+----------------------------------
+*/
+section {
+	width: 100%;
+/* 	border-top: 1px solid rgb(213, 43, 44); */
+}
+
+.search-wrap {
+	width: 1200px;
+	height: 17vh;
+	margin: 0 auto;
+	padding: 60px 0 20px 0;
+	/* background-color: aliceblue; */
+
+}
+
+.search {
+	color: rgb(60, 60, 60);
+	text-align: center;
+	width: 600px;
+	height: 40px;
+	vertical-align: middle;
+	margin: 0 auto;
+	border-radius: 20px;
+	border: 1px solid rgb(200, 200, 200);
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color: rgba(230, 230, 230, 0.2);
+}
+
+.search:focus-within {
+	background-color: rgba(230, 230, 230, 0);
+	animation-fill-mode: forwards;
+	border-radius: 20px;
+	border: 1px solid rgb(240, 73, 15);
+/* 	border: 1px solid rgba(213, 43, 44, 1); */
+}
+
+select {
+	width: 150px;
+	height: 38px;
+	padding-left: 20px;
+	float: left;
+	border: none;
+	font-size: 15px;
+	font-weight: 400;
+	font-family: 'Noto Sans KR', sans-serif;
+	border-radius: 18px 0 0 18px;
+	background-color: rgba(40, 40, 40, 0);
+
+/* -webkit-appearance: none; 화살표 없애기 for chrome*/
+/* -moz-appearance: none; 화살표 없애기 for firefox*/
+/* appearance: none;  화살표 없애기 공통*/
+}
+
+select:focus {
+	outline: none;
+	border: none;
+	background-color: rgba(40,40,40,0);
+}
+
+select::-ms-expand {
+	display: none; /* 화살표 없애기 for IE10, 11*/
+}
+
+option {
+	padding: 5px 0;
+	border: none;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+option:checked {
+	color: rgb(240, 73, 15);
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+datalist {
+	width: 30px;
+}
+
+#challengeSelect {
+	width: 30px;
+	height: 30px;
+}
+
+.searchKey {
+	width: 340px;
+	height: 30px;
+}
+
+/*
+----------------------------------
+    input
+----------------------------------
+*/
+input[type="text" i] {
+	height: 38px;
+	font-size: 14px;
+	font-family: 'Noto Sans KR', sans-serif;
+	padding: 5px;
+	outline: none;
+	border: none;
+	background-color: rgba(255, 255, 255, 0);
+}
+
+input:focus {
+	outline: none;
+}
+
+input[type="submit" i] {
+	width: 80px;
+	height: 38px;
+	appearance: auto;
+	user-select: none;
+	white-space: pre;
+	align-items: flex-start;
+	text-align: right;
+	cursor: default;
+	box-sizing: border-box;
+	color: buttontext;
+	padding: 5px;
+	outline: none;
+	border: none;
+	background-color: rgba(255, 255, 255, 0);
+	text-align: center;
+	font-size: 15px;
+	font-weight: 500;
+/* 	font-family: "Nunito Sans", sans-serif; */
+	font-family: "Noto Sans KR", sans-serif;
+	cursor: pointer;
+	float: right;
+}
+
+input[type="radio" i], label {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 13px;	
+	color: rgb(60, 60, 60);
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+/*
+----------------------------------
+    input button
+----------------------------------
+*/
+.delete-btn {
+float: right;	
+position: absolute;
+right: 230px;
+}
+
+input[type="button" i] {
+	width: 100px;
+	height: 35px;
+/* 	height: 35px; */
+/* 	margin: 15px 0; */
+	float: right;
+	background-color: rgba(245, 222, 179, 0);
+	outline: none;
+	border: none;
+	font-size: 15px;
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgb(60, 60, 60);
+	border-radius: 18px;
+	border: 1px solid rgb(89, 89, 89);
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color: rgba(230, 230, 230, 0);
+	vertical-align: middle;
+	
+}
+
+input[type="button" i]:hover {
+	border: 1px solid rgb(240, 73, 15);
+	color: rgb(240, 73, 15);	
+}
+
+/*
+----------------------------------
+  section
+----------------------------------
+*/
+
+.allList-index {
+	width: 100%;
+	padding: 30px 0 10px 0;
+	border-bottom: 2px solid rgb(89, 89, 89);
+  color: rgb(64, 64, 64);
+	font-size: 15px;
+	font-weight: 600;
+	font-family: "Ramabhadra", sans-serif;
+}
+
+.allList-content {
+	width: 100%;
+/* 	width: 100%; */
+	height: 5vh;
+	/* background-color: antiquewhite; */
+	padding: 10px 0 10px 0;
+  color: rgb(64, 64, 64);
+	font-size: 15px;
+	font-weight: 400;
+	font-family: "Noto Sans KR", sans-serif;
+	border-bottom: 1px solid rgb(89, 89, 89);
+}
+
+.index-list {
+	width: 1200px;
+	display: inline-block;
+}
+
+li.challenge-list,
+li.review-list {
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	height: 25px;
+}
+
+li>span {
+	vertical-align: middle;
+}
+
+.write-no {
+	width: 70px;
+	font-weight: 600;
+}
+
+.title {
+	width: 280px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.title a:hover {
+	color: rgb(240, 73, 15);
+	text-decoration: underline;
+}
+
+.writer {
+	width: 170px;
+	margin-left:20px;
+	float: right;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.content {
+	width: 460px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.date {
+	width: 130px;
+	margin-left: 20px;
+	float: right;
+}
+
+
+.paging {
+	width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+	position: absolute;
+	bottom: 60px;	
+	font-weight: 400;
+	font-family: 'Kumbh Sans', sans-serif;
+}
+
+.paging>a {
+	width: 20px;
+	margin: 0 20px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.paging>a:focus, .paging>a:active, .paging>a:focus-within  {
+	color: rgba(17, 21, 226, 0.918);
+	font-weight: 500;
+}

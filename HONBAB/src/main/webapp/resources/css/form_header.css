@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+*,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+a:visited {
+  color: inherit;
+}
+
+/*
+----------------------------------
+	스크롤 숨기기
+----------------------------------
+*/
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+	background: url("../img/login-background_img.jpg");
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.form-header {
+	width: 1920px;
+	height: 6vh;
+	padding: 10px 5px;
+	vertical-align: middle;
+}
+
+.form-inner-header {
+	width: 1720px;
+	margin: 0 auto;
+}
+
+.logo {
+	font-size: 24px;
+	font-weight: 800;
+	font-family: "Ramabhadra", sans-serif;
+	width: 100px;
+	margin-right: 40px;
+}
+
+.logo > span {
+	padding: 10px 0;
+	margin: 5px 0;
+	width: 106.59px;
+	height: 66px;
+}
+.logo > span > a {
+	color: rgb(240, 73, 15);
+}
+

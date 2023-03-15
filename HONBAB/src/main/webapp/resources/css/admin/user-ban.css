@@ -1,0 +1,233 @@
+/*
+----------------------------------
+	challenge allList
+----------------------------------
+*/
+
+@charset "UTF-8";
+
+*, a {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+a:link, a:visited {
+	color: rgb(34, 34, 34);
+}
+
+/*
+----------------------------------
+	스크롤 숨기기
+----------------------------------
+*/
+body {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+	background: url("../../img/background_img_g.jpg");
+}
+
+body::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera*/
+}
+/*
+----------------------------------
+    main
+----------------------------------
+*/
+main {
+	width: 1200px;
+	height: 92vh;
+	margin: 0 auto;
+	padding-top: 170px;
+	/* background-color: rgb(245, 244, 243); */
+}
+
+.board-part {
+	width: 100%;
+	height: 80%;
+	padding: 30px 0 10px 0;
+/* 	border-bottom: 1px solid rgb(89, 89, 89); */
+  color: rgb(64, 64, 64);
+	font-size: 18px;
+	font-weight: 600;
+	font-family: "Ramabhadra", sans-serif;
+}
+
+/*
+----------------------------------
+  section
+----------------------------------
+*/
+section {
+	width: 100%;
+/* 	border-top: 1px solid rgb(213, 43, 44); */
+}
+
+.search-wrap {
+	width: 1200px;
+	height: 17vh;
+	margin: 0 auto;
+	padding: 60px 0 20px 0;
+	/* background-color: aliceblue; */
+}
+
+.search {
+	color: rgb(60, 60, 60);
+	text-align: center;
+	width: 600px;
+	height: 40px;
+	vertical-align: middle;
+	margin: 0 auto;
+	border-radius: 20px;
+	border: 1px solid rgb(200, 200, 200);
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color: rgba(230, 230, 230, 0.2);
+}
+
+.search:focus-within {
+	background-color: rgba(230, 230, 230, 0);
+	animation-fill-mode: forwards;
+	border-radius: 20px;
+	border: 1px solid rgb(240, 73, 15);
+/* 	border: 1px solid rgba(213, 43, 44, 1); */
+}
+
+.user-find {
+	width: 100%;
+	margin: 0 auto;
+	color: rgb(60, 60, 60);
+	text-align: center;
+	font-size: 32px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+}
+
+.user-find > span {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+/*
+----------------------------------
+  result
+----------------------------------
+*/
+.result {
+	width: 600px;
+	height: 12vh;	
+	margin: 0 auto;
+}
+
+.re-t {
+	width: 600px;
+	height: 35px;
+	border-bottom: 1px solid rgb(89, 89, 89);
+}
+
+ul.user-info {
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+	display: inline-block;
+	padding-top: 20px;
+}
+
+.result-id {
+	width: 300px;
+	height: 50px;
+	float: left;
+}
+
+.result-id > a {
+	cursor: pointer;
+}
+
+.btn {
+	width: 300px;
+	height: 50px;
+	float: right;
+}
+
+/*
+----------------------------------
+    input
+----------------------------------
+*/
+input[type="text" i] {
+	width: 450px;
+	height: 38px;
+	font-size: 14px;
+	font-family: 'Noto Sans KR', sans-serif;
+	padding: 5px;
+	outline: none;
+	border: none;
+	background-color: rgba(255, 255, 255, 0);
+}
+
+input:focus {
+	outline: none;
+}
+
+input[type="submit" i] {
+	width: 80px;
+	height: 38px;
+	appearance: auto;
+	user-select: none;
+	white-space: pre;
+	align-items: flex-start;
+	text-align: right;
+	cursor: default;
+	box-sizing: border-box;
+	color: buttontext;
+	padding: 5px;
+	outline: none;
+	border: none;
+	background-color: rgba(255, 255, 255, 0);
+	text-align: center;
+	font-size: 15px;
+	font-weight: 500;
+/* 	font-family: "Nunito Sans", sans-serif; */
+	font-family: "Noto Sans KR", sans-serif;
+	cursor: pointer;
+	float: right;
+}
+
+input[type="submit" i]:hover {
+	color:rgb(240, 73, 15);
+}
+
+/*
+----------------------------------
+    input button
+----------------------------------
+*/
+input[type="button" i] {
+	width: 100px;
+	height: 35px;
+	margin: 10px 0;
+	float: right;
+	background-color: rgba(245, 222, 179, 0);
+	outline: none;
+	border: none;
+	font-size: 15px;
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgb(60, 60, 60);
+	border-radius: 18px;
+	border: 1px solid rgb(89, 89, 89);
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color: rgba(230, 230, 230, 0);
+	vertical-align: middle;
+}
+
+input[type="button" i]:hover {
+	border: 1px solid rgb(240, 73, 15);
+	color: rgb(240, 73, 15);	
+}
+
+

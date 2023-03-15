@@ -1,0 +1,387 @@
+@charset "UTF-8";
+
+*,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+a:link,
+a:visited {
+  color: rgb(34, 34, 34);
+}
+
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+} */
+
+/* .line {
+  margin-bottom: 20px;
+  height: 1px;
+  color: rgb(163, 163, 163);
+  border-top: 1px solid rgb(89, 89, 89);
+} */
+
+/*
+----------------------------------
+	스크롤 숨기기
+----------------------------------
+*/
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+	background: url("../img/login-background_img.jpg");
+}
+
+/*
+----------------------------------
+  header
+----------------------------------
+*/
+.login-header {
+	width: 1920px;
+	height: 6vh;
+	padding: 10px 5px;
+	vertical-align: middle;
+}
+
+.login-inner-header {
+	width: 1720px;
+	margin: 0 auto;
+}
+
+.logo {
+	font-size: 24px;
+	font-weight: 800;
+	font-family: "Ramabhadra", sans-serif;
+	width: 100px;
+	margin-right: 40px;
+}
+
+.logo > span {
+	padding: 10px 0;
+	margin: 5px 0;
+}
+.logo > span > a {
+	color: rgb(240, 73, 15);
+}
+
+
+/*
+----------------------------------
+  login-aside
+----------------------------------
+*/
+/* .text {
+  width: 350px;
+  padding-left: 100px;
+  margin-top: 70px;
+ 	font-size: 12px;
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+.honbab {
+  width: 350px;
+  padding-left: 100px;
+  font-size: 45px;
+  font-weight: 800;
+} */
+
+.login-aside {
+	width: 50%;
+  height: 92vh;
+  float: left;
+	background: url("../img/rice.png") no-repeat;  	
+}
+
+
+/*
+----------------------------------
+    main
+----------------------------------
+*/
+main.login-main {
+  width: 50%;
+  height: 92vh;
+	float: right;
+}
+
+.login-part {
+	position: relative;
+	width: 60%;
+	height: 700px;
+	margin-top: 170px;
+/* 	background-color: aqua;  */
+}
+
+/*
+----------------------------------
+ 	회원선택
+----------------------------------
+*/
+
+.title-login {
+	position: relative;
+	width: 60%;
+	margin: 0 auto;
+	color: rgb(230, 230, 230);
+	text-align: center;
+	font-weight: 800;
+	font-size: 30px;	
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+.login-member {
+/* 	position: relative; */
+  width: 60%;
+	height: 60px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  margin: 0 auto;
+  text-align: center;
+/*   padding: 20px 0; */
+  vertical-align: middle;
+  margin-top: 40px;
+/*   border: 1px solid rgb(153, 153, 153);  
+  border-bottom: 2px solid rgb(153, 153, 153);  */ 
+}
+
+label {
+	position: relative;
+  vertical-align: middle;
+  width: 50%;
+  height: 58px;
+/*   margin-right: 20px; */
+  color: rgb(204, 204, 204);
+  padding: 20px 40px;
+}
+
+input[type="radio" i] {
+  vertical-align: middle;
+  appearance: none;
+  border: max(1px, 0.1em) solid gray;
+  border-radius: 50%;
+  width: 1.2em;
+  height: 1.2em;
+  transition: border 0.3s ease-in-out;
+  float: left;
+  margin-right: 5px;
+}
+
+[type="radio"]:checked {
+  border: 2px solid rgb(240, 73, 15);
+  border-radius: 50%;
+}
+
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(2px, 0.2em) lightgray;
+  cursor: pointer;
+}
+
+.mem {
+  vertical-align: middle;
+  float: right;
+  margin-left: 5px;
+  font-size: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: left;
+}
+
+/*
+----------------------------------
+	login form 
+----------------------------------
+*/
+#personal, #admin {
+	position: relative;
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+}
+
+#personal > form > ul, 
+#admin > form > ul {
+	width: 60%;
+	margin: 0 auto;
+}
+
+/* form.naver-login {
+	position: relative;
+	height: 50px;
+} */
+
+.naver-login-btn {
+	width: 345.59px;
+	position: absolute;
+	margin: 0 auto;
+	bottom: 50px;
+	left: 120px;
+	padding: 10px 20px;
+	vertical-align: middle;
+}
+
+.naver-login-btn a {
+  color: rgb(118, 118, 118);
+/*   color: rgb(217, 217, 217); */
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 13px;
+  margin-left: 15px;
+}	
+	
+#naver-btn {
+	margin: 0 auto;
+	margin-left: 50px;
+}
+
+.login-form-p {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.login-form-a {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.login-input-wrap {
+	position: relative;
+	width: 100%;
+  height: 85px;
+  padding: 12px 0 12px 0;
+  display: inline-block;
+  margin: 0 auto;
+  border-bottom: 1px solid rgb(153, 153, 153);   
+}
+
+span.index_en {
+	width: 100px;
+	height: 25px;
+  font-size: 17px;
+  font-weight: 600;
+  color: rgb(217, 217, 217);
+/*   font-family: "Nunito Sans", sans-serif; */
+  font-family: "Ramabhadra", sans-serif;
+  float: left;
+}
+
+.go-join {
+	position: absolute;
+	bottom: 0;
+}
+
+.go-join,
+.go-join > a {
+	width: 100%;
+	height: 30px;
+	margin: 0 auto;
+	text-align: center;
+	font-family: "Noto Sans KR", sans-serif;
+	font-weight: 300;	
+	font-size: 14px;
+	color: rgb(217, 217, 217);
+}
+.go-join > a:hover {
+	text-decoration: underline;
+	color: rgb(240, 73, 15);
+}
+
+/*
+----------------------------------
+  input
+----------------------------------
+*/
+input.login {
+/*   width: 400px; */
+	width: 100%;
+  height: 30px;
+  float: right;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(217, 217, 217);
+  font-family: "Noto Sans KR", sans-serif;
+  border-radius: 3px;
+  font-family: "Ramabhadra", sans-serif;	
+}
+
+.login-btn {
+  font-family: "Ramabhadra", sans-serif;	
+}
+
+input:focus {
+  outline: none;
+  color: #FFF;
+/*   background-color: rgba(240, 248, 255, 0.1); */
+  border-radius: 3px;
+  border: 1px solid rgb(240, 73, 15);
+  font-family: "Ramabhadra", sans-serif;	
+  
+}
+
+input:active {
+  font-family: "Ramabhadra", sans-serif;	
+  background-color: rgba(240, 248, 255, 0);  
+}
+
+.mem,
+input {
+  vertical-align: middle;
+}
+
+input[type="submit" i] {
+	width: 100%;
+  appearance: auto;
+  user-select: none;
+  white-space: pre;
+  align-items: flex-start;
+  cursor: default;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0);
+  color: buttontext;
+/*   padding: 1px 6px; */
+  border-width: 0;
+  border-style: none;
+  border-color: buttonborder;
+  border-image: initial;
+  text-align: right;
+  font-size: 18px;
+  font-weight: 700;
+/*   font-family: "Nunito Sans", sans-serif; */
+  font-family: "Ramabhadra", sans-serif;  
+  cursor: pointer;
+  color: rgb(230, 230, 230);
+  margin: 0 auto;
+  margin-top: 15px;
+  float: right;
+  padding: 0 115px;
+}
+
+/* input[type="submit" i]:hover {
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 5px;
+} */
+
+/*
+----------------------------------
+  footer
+----------------------------------
+*/
+/* footer {
+  width: 350px;
+  padding-left: 100px;
+  position: absolute;
+  bottom: 60px;
+} */
+

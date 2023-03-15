@@ -1,0 +1,265 @@
+@charset "UTF-8";
+
+*,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+a:link,
+a:visited {
+  color: rgb(34, 34, 34);
+}
+
+hr {
+	background-color: rgb(240, 240, 240);
+}
+
+.line {
+  margin-bottom: 20px;
+  width: 100px;
+  height: 1px;
+}
+
+/*
+----------------------------------
+	스크롤 숨기기
+----------------------------------
+*/
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+/*
+----------------------------------
+    aside
+----------------------------------
+*/
+aside {
+  position: relative;
+  width: 25%;
+  height: 92vh;
+  /* background-color: aliceblue; */
+  float: left;
+}
+
+.text {
+  width: 350px;
+  padding-left: 100px;
+  margin-top: 70px;
+ 	font-size: 12px;
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+.honbab {
+  width: 350px;
+  padding-left: 100px;
+  font-size: 45px;
+  font-weight: 800;
+}
+
+/*
+----------------------------------
+    aside footer
+----------------------------------
+*/
+footer {
+  width: 350px;
+  padding-left: 100px;
+  position: absolute;
+  bottom: 60px;
+}
+
+/*
+----------------------------------
+    main
+----------------------------------
+*/
+main {
+  width: 75%;
+  height: 92vh;
+  float: right;
+  /* background-color: aquamarine; */
+}
+
+.main_wrap {
+  width: 850px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+select, .text {
+	display: inline-block;
+	float: left;
+	position: absolute;
+	top: 100px;
+}
+
+select {
+width: 100px;
+height: 34px;
+padding-left: 20px;
+border: none;
+font-size: 16px;
+font-weight: 400;
+font-family: 'Noto Sans KR', sans-serif;
+border-radius: 5px 0 0 5px;
+background-color: rgba(40, 40, 40, 0);
+top: 100px;
+}
+
+.index_en {
+  font-size: 15px;
+  color: rgba(17, 21, 226, 0.918);
+	font-weight: 600;
+	font-family: "Ramabhadra", sans-serif;
+}
+
+.index_kr {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(17, 21, 226, 0.918);
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+
+li {
+  height: 30px;
+}
+
+li > span {
+  width: 200px;
+}
+
+.content {
+  height: 350px;
+}
+
+#content {
+  height: 300px;
+}
+
+textarea {
+  width: 700px;
+  height: 330px;
+  padding: 5px;
+  resize: none;
+  float: right;
+  border-radius: 5px;
+  border: 1px solid rgba(202, 202, 202, 0.527);
+  background-color: rgba(240, 248, 255, 0);
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(40, 40, 40);
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.upload_file {
+  height: 150px;
+}
+
+span,
+input {
+  vertical-align: middle;
+}
+
+/*
+----------------------------------
+    input
+----------------------------------
+*/
+input {
+  width: 700px;
+  height: 30px;
+  float: right;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(40, 40, 40);
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="submit" i] {
+  width: 100px;
+  appearance: auto;
+  user-select: none;
+  white-space: pre;
+  align-items: flex-start;
+  text-align: right;
+  cursor: default;
+  box-sizing: border-box;
+  padding: 1px 6px;
+  border-width: 0;
+  border-style: none;
+  border-color: buttonborder;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  font-size: 15px;
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgba(17, 21, 226, 0.918);
+  border: 1px solid rgba(17, 21, 226, 0.918);
+  cursor: pointer;
+  border-radius: 3px;
+  margin-left: 15px;
+}
+
+
+
+input[type="button" i] {
+  width: 100px;
+  appearance: auto;
+  user-select: none;
+  white-space: pre;
+  align-items: flex-start;
+  text-align: right;
+  cursor: default;
+  box-sizing: border-box;
+  padding: 1px 6px;
+  border-width: 0;
+  border-style: none;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+	border-radius: 3px;
+	font-size: 15px;
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgba(17, 21, 226, 0.918);
+  border: 1px solid rgba(17, 21, 226, 0.918);
+  cursor: pointer;
+}
+
+.innerfooter {
+	float: left;
+}
+
+input[type="file" i] {
+	font-size: 14px;
+  border-radius: 5px;
+}
+
+input[type="radio" i] {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 13px;	
+	color: rgb(60, 60, 60);
+	font-family: "Noto Sans KR", sans-serif;
+}
+

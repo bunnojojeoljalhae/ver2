@@ -1,0 +1,311 @@
+@charset "UTF-8";
+
+*,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+a:visited {
+  color: black;
+}
+
+/*
+----------------------------------
+	스크롤 숨기기
+----------------------------------
+*/
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+	background: url("../img/login-background_img.jpg");
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+body>.join_form_wrap {
+	width: 650px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+/*
+----------------------------------
+	header
+----------------------------------
+*/
+.join-header {
+	width: 1920px;
+	height: 6vh;
+	padding: 10px 5px;
+	vertical-align: middle;
+}
+
+.join-inner-header {
+	width: 1720px;
+	height: 46px;
+	margin: 0 auto;
+}
+
+.logo {
+	font-size: 24px;
+	font-weight: 800;
+	font-family: "Ramabhadra", sans-serif;
+	width: 100px;
+	margin-right: 40px;
+}
+
+.logo > span {
+	padding: 10px 0;
+	margin: 5px 0;
+}
+.logo > span > a {
+	height: 46px;
+	color: rgb(240, 73, 15);
+}
+
+/*
+----------------------------------
+  login-aside
+----------------------------------
+*/
+
+.join-aside {
+	width: 50%;
+  height: 92vh;
+  float: left;
+	background: url("../img/rice.png") no-repeat;  	
+}
+
+/*
+----------------------------------
+  main
+----------------------------------
+*/
+
+main.join-main {
+  width: 50%;
+  height: 92vh;
+	float: right;
+}
+
+.join-main-inner {
+	position: relative;
+	width: 60%;
+	height: 700px;
+/* 	margin-top: 100px; */
+	margin-top: 100px;
+}
+
+.title-join {
+	position: relative;
+	width: 60%;
+	margin: 0 auto;
+	margin-bottom: 40px;
+	color: rgb(230, 230, 230);
+	text-align: center;
+	font-weight: 800;
+	font-size: 30px;	
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+.join-input {
+	position: relative;
+	width: 100%;
+  height: 55px;
+  padding: 12px 0 12px 0;
+  display: inline-block;
+  margin: 0 auto;
+  border-bottom: 1px solid rgb(153, 153, 153);   
+}
+
+/* .address, .gender {
+	height: 50px; 
+	padding: 8px 0 10px 0;
+} */
+
+.join-input, span.index {
+	vertical-align: middle;
+}
+
+span.index {
+	width: 170px;
+	height: 25px;
+  font-size: 17px;
+  font-weight: 600;
+  color: rgb(217, 217, 217);
+  font-family: "Ramabhadra", sans-serif;
+  float: left;
+}
+/*
+----------------------------------
+	login form - input
+----------------------------------
+*/
+input {
+	width: 55%;
+  height: 30px;
+  float: left;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  padding: 5px;
+/*   margin-top: 10px; */
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(217, 217, 217);
+  font-family: "Noto Sans KR", sans-serif;
+  border-radius: 3px;
+  font-family: "Ramabhadra", sans-serif;	
+  marin-left: 300px;
+}
+
+input:focus {
+  outline: none;
+  color: #FFF;
+  border-radius: 3px;
+  border: 1px solid rgb(240, 73, 15);
+  font-family: "Ramabhadra", sans-serif;	
+  
+}
+
+input:active {
+  font-family: "Ramabhadra", sans-serif;	
+  background-color: rgba(240, 248, 255, 0);  
+}
+
+#name {
+	font-family: 'Noto Sans KR', sans-serif;	
+}
+/*
+----------------------------------
+	modify form - input
+----------------------------------
+*/
+input.modify-input:focus {
+  outline: none;
+  border: none;
+  font-family: "Ramabhadra", sans-serif;	
+  
+}
+
+/*
+----------------------------------
+	login form - select
+----------------------------------
+*/
+select {
+	width: 100px;
+	height: 34px;
+	float: left;
+	border: none;
+	font-size: 15px;
+	font-weight: 300;
+	font-family: 'Noto Sans KR', sans-serif;
+	border-radius: 5px 0 0 5px;
+	background-color: rgba(40, 40, 40, 0);
+	color: rgb(217, 217, 217);
+}
+
+select:focus {
+	outline: none;
+	border: none;
+	background-color: rgba(40,40,40,0);
+}
+
+select option {
+	background-color: rgb(40, 39, 37);
+}	
+
+select option:checked {
+	color: rgb(240, 73, 15);
+	font-weight: 400;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* -webkit-appearance: none; 화살표 없애기 for chrome*/
+/* -moz-appearance: none; 화살표 없애기 for firefox*/
+/* appearance: none;  화살표 없애기 공통*/
+select::-ms-expand {
+display: none; /* 화살표 없애기 for IE10, 11*/
+}
+
+button[type="button" i] {
+/* 	width: 876px; */
+	width: 20%;
+  appearance: auto;
+  user-select: none;
+  white-space: pre;
+  align-items: flex-start;
+  cursor: default;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0);
+/*   padding: 1px 6px; */
+  border-width: 0;
+  border-style: none;
+  border-color: buttonborder;
+  border-image: initial;
+  text-align: right;
+  font-size: 18px;
+  font-weight: 700;
+/*   font-family: "Nunito Sans", sans-serif; */
+  font-family: "Ramabhadra", sans-serif;  
+  cursor: pointer;
+  color: rgb(242, 242, 242);
+  margin: 0 auto;
+  margin-top: 15px;
+  float: right;
+}
+
+button[type="button" i]:hover {
+	color: rgb(240, 73, 15);
+	text-decoration: underline;
+}
+
+button[type="button" i].repeat-chk {
+	width: 10%;
+  appearance: auto;
+  user-select: none;
+  white-space: pre;
+  align-items: flex-start;
+  cursor: default;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0);
+  border-width: 0;
+  border-style: none;
+  border-color: buttonborder;
+  border-image: initial;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 300;
+	font-family: 'Noto Sans KR', sans-serif;  
+  cursor: pointer;
+  color: rgb(242, 242, 242);
+  margin: 0 auto;
+  margin-top: 5px;
+  float: right;	
+  opacity: 0.8;
+}
+
+button[type="button" i].repeat-chk:hover {
+	color: rgb(240, 73, 15);
+	opacity: 1;
+	text-decoration: underline;
+}
+	
+#modi {
+	float: left;
+	text-align: left;
+}
+
+li>#gender{
+/* 	margin-left: 80px; */
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	list-style: none;
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+CREATE TABLE ADMIN(
+ADMIN_NO NUMBER(10) NOT NULL,
+ADMIN_ID VARCHAR2(15) PRIMARY KEY,
+ADMIN_PW VARCHAR2(20) NOT NULL,
+ADMIN_NICKNAME VARCHAR2(25) NOT NULL
+);
+
+CREATE SEQUENCE ADMIN_SEQ 
+INCREMENT BY 1 
+START WITH 1 
+MAXVALUE 1000
+NOCYCLE
+NOCACHE;
+-->
+
+<!-- 
+INSERT INTO ADMIN (ADMIN_NO, ADMIN_ID, ADMIN_PW, ADMIN_NICKNAME) 
+VALUES (ADMIN_SEQ.NEXTVAL, 'adminA', '1234', '관리자A'); 
+-->
+
+<mapper namespace="com.web.honbab.mybatis.AdminMapper">
+
+	<resultMap type="com.web.honbab.dto.AdminDTO" id="admin">
+		<id property="adminId" column="ADMIN_ID"></id>
+		<result property="adminPw" column="ADMIN_PW"></result>
+		<result property="adminNickName" column="ADMIN_NICKNAME"></result>
+		<result property="adminNo" column="ADMIN_NO"></result>
+	</resultMap>
+	
+	<resultMap type="com.web.honbab.dto.NoticeReplyDTO" id="noticeReply">
+		<id property="idx" column="IDX" />
+		<result property="replyId" column="REPLY_ID" />
+		<result property="replyNick" column="REPLY_NICKNAME" />
+		<result property="reply" column="REPLY" />
+		<result property="writeDate" column="WRITE_DATE" />
+		<result property="replyNo" column="REPLY_NO" />
+	</resultMap>
+	
+	<resultMap type="com.web.honbab.dto.MemberDTO" id="member">
+		<id property = "id" column="ID"></id>
+		<result property = "pw" column="PW"></result>
+		<result property = "name" column="NAME"></result>
+		<result property = "nickName" column="NICKNAME"></result>
+		<result property = "tel" column="TEL"></result>
+		<result property = "region" column="REGION"></result>
+		<result property = "gender" column="GENDER"></result>
+		<result property = "email" column="EMAIL"></result>
+		<result property = "joinDate" column="JOIN_DATE"></result>
+		<result property = "userNo" column="USER_NO"></result>
+	</resultMap>
+
+	<select id="adminLogin" resultMap="admin">
+		SELECT * FROM ADMIN 
+		WHERE ADMIN_ID=#{adminId}
+	</select>
+
+	<!-- <select id="admin_check" resultMap="admin"> select * from ADMIN_LOGIN 
+		where id=#{adminId} </select> -->
+
+<!-- 	<select id="getUsers" resultMap="admin">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM MEMBER ORDER BY USER_NO DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
+	</select> -->
+	
+	<select id="userSearch" resultMap="admin">
+		SELECT * FROM MEMBER
+		WHERE ID=#{id}
+	</select>
+
+	<select id="userCount" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER
+	</select>
+
+	<delete id="userBan">
+		DELETE FROM MEMBER
+		WHERE ID=#{id}
+	</delete>
+
+</mapper>

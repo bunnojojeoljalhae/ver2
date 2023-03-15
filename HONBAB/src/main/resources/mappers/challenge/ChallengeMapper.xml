@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+CREATE TABLE CHALLENGE(
+WRITE_NO NUMBER(10) PRIMARY KEY,
+ID VARCHAR2(15) NOT NULL,
+NICKNAME VARCHAR2(20) NOT NULL,
+CH_LEVEL NUMBER(2) NOT NULL,
+TITLE VARCHAR2(30) NOT NULL,
+CONTENT VARCHAR2(1000) NOT NULL,
+VIEWS NUMBER(10) DEFAULT 0,
+WRITE_DATE DATE DEFAULT SYSDATE NOT NULL,
+IMG_NAME VARCHAR2(50),
+LIKES NUMBER(10) DEFAULT 0,
+IDX VARCHAR2(1) NOT NULL
+);
+
+CREATE SEQUENCE CHALLENGE_SEQ
+INCREMENT BY 1 
+START WITH 1 
+MAXVALUE 5000
+NOCYCLE
+NOCACHE;
+);
+
+CREATE SEQUENCE CHALLENGE_SEQ INCREMENT BY 1 MAXVALUE 1000;
+ -->
+
+<mapper namespace="com.web.honbab.mybatis.ChallengeMapper">
+
+	<resultMap type="com.web.honbab.dto.ChallengeDTO" id="challenge">
+		<id property="writeNo" column="WRITE_NO" />
+		<result property="id" column="ID" />
+		<result property="nickName" column="NICKNAME" />
+		<result property="chLevel" column="CH_LEVEL" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="views" column="VIEWS" />
+		<result property="writeDate" column="WRITE_DATE" />
+		<result property="imgName" column="IMG_NAME" />
+		<result property="likes" column="LIKES" />
+		<result property="idx" column="IDX" />
+	</resultMap>
+	
+	<!-- nickname과 id는 userjoin의 nickname, id를 참조해 받아온다. -->
+	<resultMap type="com.web.honbab.dto.ChallengeLikeDTO" id="challengeLike">
+		<id property="likeId" column="LINE_ID" />
+		<result property="likeWriteNo" column="LIKE_WRITE_NO" />
+	</resultMap>
+
+	<select id="challengeAllList" resultMap="challenge">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM CHALLENGE ORDER BY WRITE_NO DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
+	</select>
+
+	<select id="challengePgCount" resultType="Integer">
+		SELECT COUNT(*) FROM CHALLENGE
+	</select>
+
+	<select id="challengeContent" resultMap="challenge">
+		SELECT * FROM CHALLENGE
+		WHERE WRITE_NO=#{writeNo}
+	</select>
+
+	<insert id="saveChallenge">
+		INSERT INTO CHALLENGE
+		(WRITE_NO, ID, NICKNAME, CH_LEVEL, TITLE, CONTENT, IMG_NAME, IDX)
+		VALUES(CHALLENGE_SEQ.NEXTVAL, #{id}, #{nickName}, #{chLevel}, #{title}, #{content}, #{imgName}, #{idx})
+	</insert>
+
+	<update id="modifyChallenge">
+		UPDATE CHALLENGE SET 
+		CH_LEVEL=#{chLevel},
+		TITLE=#{title},
+		CONTENT=#{content},
+		IMG_NAME=#{imgName, jdbcType=VARCHAR}
+		WHERE WRITE_NO=#{writeNo}
+	</update>
+
+	<delete id="deleteChallenge">
+		DELETE FROM CHALLENGE 
+		WHERE WRITE_NO=#{writeNo}
+	</delete>
+	
+	<update id="upViews">
+		UPDATE CHALLENGE SET 
+		VIEWS=VIEWS +1 
+		WHERE WRITE_NO=#{writeNo}
+	</update>
+	
+	<select id="challengeBestList" resultMap="challenge">
+		SELECT * FROM (SELECT * FROM CHALLENGE ORDER BY VIEWS DESC) A
+		<![CDATA[WHERE ROWNUM <= 5]]>
+	</select>
+
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡLIKE ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+	<select id="likeChk" resultType="Integer">
+		SELECT COUNT(*)
+		FROM CHALLENGE_LIKE
+		WHERE LINE_ID = #{likeId}
+		AND LIKE_WRITE_NO=#{writeNo}
+	</select>
+	
+	<update id="likeUp">
+		UPDATE CHALLENGE SET 
+		LIKES = LIKES+1
+		WHERE WRITE_NO=#{writeNo}
+	</update>
+	
+	<update id="likeDown">
+		UPDATE CHALLENGE SET 
+		LIKES = LIKES-1
+		WHERE WRITE_NO=#{writeNo}
+	</update>
+	
+	<insert id="like">
+		INSERT INTO CHALLENGE_LIKE 
+		VALUES(#{likeId}, #{writeNo})
+	</insert>
+	
+	<delete id="unlike">
+		DELETE FROM CHALLENGE_LIKE
+		WHERE LINE_ID = #{likeId}
+		AND LIKE_WRITE_NO=#{writeNo}
+	</delete>	
+	
+	<!-- 검색 -->
+	<select id="challengeSearchCount" resultMap="challenge">
+		SELECT COUNT(*) FROM CHALLENGE 
+		WHERE CH_LEVEL=#{chLevel} AND TITLE LIKE '%'||#{keyword}||'%' 
+	</select>
+	
+	<select id="searchLevelOne" resultMap="challenge">
+		SELECT * FROM CHALLENGE 
+		WHERE CH_LEVEL=#{chLevel} AND TITLE LIKE '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelTwo" resultMap="challenge">
+		SELECT * FROM CHALLENGE 
+		WHERE CH_LEVEL=#{chLevel} AND TITLE LIKE '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelThree" resultMap="challenge">
+		SELECT * FROM CHALLENGE 
+		WHERE CH_LEVEL=#{chLevel} AND TITLE LIKE '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelFour" resultMap="challenge">
+		SELECT * FROM CHALLENGE 
+		WHERE CH_LEVEL=#{chLevel} AND TITLE LIKE '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelFive" resultMap="challenge">
+		SELECT * FROM CHALLENGE 
+		WHERE CH_LEVEL=#{chLevel} AND TITLE LIKE '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelSix" resultMap="challenge">
+		SELECT * FROM CHALLENGE 
+		WHERE CH_LEVEL=#{chLevel} AND TITLE LIKE '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelSeven" resultMap="challenge">
+		SELECT * FROM CHALLENGE 
+		WHERE CH_LEVEL=#{chLevel} AND TITLE LIKE '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelEight" resultMap="challenge">
+		SELECT * FROM CHALLENGE 
+		WHERE CH_LEVEL=#{chLevel} AND TITLE LIKE '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelNine" resultMap="challenge">
+		SELECT * FROM CHALLENGE 
+		WHERE CH_LEVEL=#{chLevel} AND TITLE LIKE '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+	
+	
+	<!-- 
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	
+	
+			SELECT * FROM 
+			(SELECT ROWNUM RN, * FROM 
+			LEVEL_CHALLENGE 
+			ORDER BY VIEWS DESC)
+		WHERE RN BETWEEN 1 AND 5
+	
+			SELECT B.* FROM 
+			(SELECT ROWNUM RN, A.* FROM
+				(SELECT * FROM LEVEL_CHALLENGE 
+				WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'  
+				ORDER BY WRITE_NO DESC) A) B 
+		WHERE RN between #{s} and #{e}
+	 -->
+	
+	<!-- 
+	CREATE TABLE LEVEL_CHALLENGE_LIKE (
+	LIKE_NO NUMBER DEFAULT 0,
+	LIKE_WRITE_NO NUMBER NOT NULL,
+	LIKE_ID VARCHAR2(100),
+	LIKE_NICKNAME VARCHAR2(100),
+	FOREIGN KEY(LIKE_WRITE_NO) REFERENCES LEVEL_CHALLENGE(WRITE_NO)
+	);
+	-->
+	
+<!-- 	<resultMap type="com.web.honbab.challenge.dto.ChallengeLikeDTO" id="ChLike">
+		<id property="likeNo" column="LIKE_NO" />
+		<result property="likeWriteNo" column="LIKE_WRITE_NO" />
+		<result property="likeId" column="LIKE_ID" />
+		<result property="likeNickName" column="LIKE_NICKNAME" />
+	</resultMap> 
+	
+	<select id="likeCount" resultType="Integer">
+		SELECT COUNT(LIKE_NO) FROM 
+		LEVEL_CHALLENGE_LIKE 
+		WHERE LIKE_WRITE_NO=#{likeWriteNo}
+		WHERE 
+		LIKE_WRITE_NO=#{likeWriteNo}, LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName} 
+	</select>
+	
+	<insert id="likeIn">
+		INSERT INTO LEVEL_CHALLENGE_LIKE
+		(LIKE_ID, LIKE_NICKNAME)
+		VALUES (#{likeId}, #{likeNickName})
+	</insert>
+	
+	<select id="likeInfo" resultType="Integer">
+		SELECT LIKE_NO FROM LEVEL_CHALLENGE_LIKE
+		WHERE LIKE_WRITE_NO=#{likeWriteNo}
+		, LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName}
+	</select>
+	
+	<update id="likeUpdate" >
+		UPDATE LEVEL_CHALLENGE_LIKE
+		SET <include refid="cal"></include>
+		WHERE LIKE_WRITE_NO=#{likeWriteNo}
+		, LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName}
+	</update>
+	
+	<sql id="cal">
+		<if test="count == 1">
+			LIKE_NO = 0
+		</if>
+		<if test="count == 0">
+			LIKE_NO = LIKE_NO + 1
+		</if>
+	</sql> -->
+	
+</mapper>

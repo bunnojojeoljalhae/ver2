@@ -1,0 +1,140 @@
+*, a {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	background-color: transparent;
+}
+
+a {
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
+/*
+----------------------------------
+    header
+----------------------------------
+*/
+header {
+	width: 100%;
+	height: 6vh;
+	z-index: 1;
+/* 	background-color: rgb(255, 255, 255); */
+/* 	border-bottom: 1px solid rgb(213, 43, 44); */
+	
+}
+
+.user-header,
+.admin-header {
+	width: 1720px;
+	height: 6vh;
+	margin: auto auto;
+	padding: 10px 5px;
+	vertical-align: middle;
+/* 	background-color: rgb(255, 255, 255); */
+/* 	border-bottom: 1px solid rgba(80, 80, 80, 0.918); */
+/* 	border-bottom: 1px solid rgba(17, 21, 226, 0.918); */
+}
+
+.logo, .user-header > ul, header li,
+.logo, .admin-header > ul, header li {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.logo {
+	font-size: 24px;
+	font-weight: 800;
+	font-family: "Ramabhadra", sans-serif;
+	width: 100px;
+	margin-right: 40px;
+}
+
+.logo > span {
+	padding: 10px 0;
+	margin: 5px 0;
+}
+
+/* .nav > li {
+	width: auto;
+	text-align: left;
+	font-weight: 500;
+	font-family: "Kumbh Sans", sans-serif;
+	margin: 0 20px;
+} */
+
+.nav {
+	width: 1550px;
+  vertical-align: middle;
+}
+
+#find {
+  margin-left: 40px;
+}
+
+.board, .user, .admin {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.board {
+  float: left;
+  width: fit-content;
+  height: 26px;
+  text-align: center;
+  font-size: 16px;
+/*   font-weight: 500;
+  font-family: "Kumbh Sans", sans-serif; */
+  margin: 0 40px;
+  vertical-align: middle;
+  padding-top: 5px;
+}
+
+.user, .admin {
+  width: 125px;
+  height: 26px;
+  font-size: 16px;
+/*   font-weight: 500;
+  font-family: "Kumbh Sans", sans-serif; */
+  float: right;
+  padding-top: 5px;
+}
+
+.board > a.eng:hover,
+.user > a:hover,
+.admin > a:hover {
+	color: rgb(240, 73, 15);
+	text-decoration: underline;
+}
+
+#dash {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+  width: 24px;
+  height: 24px;
+  float: right;
+  /* filter: invert(15%) sepia(98%) saturate(3987%) hue-rotate(233deg) brightness(88%) contrast(104%); */
+	filter: invert(28%) sepia(1%) saturate(288%) hue-rotate(43deg) brightness(101%) contrast(87%);
+}
+
+
+#join,
+#mypage {
+  margin-left: 50px;
+}
+
+#login,
+#join,
+#logout,
+#mypage {
+  float: right;
+  /* color: rgba(17, 21, 226, 0.918); */
+}
+
+

@@ -1,0 +1,144 @@
+*,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+a:visited {
+  color: inherit;
+}
+
+/*
+----------------------------------
+	스크롤 숨기기
+----------------------------------
+*/
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+body {
+/* 	height: 200vh;  */
+	height: calc(135vh + 600px); 
+/* 	height: calc(7vh + 92vh + 500px + 20vh + 8vh);  */
+  background: url("../img/background_img_g.jpg");
+}
+
+/*
+----------------------------------
+    main
+----------------------------------
+*/
+main {
+	width: 1920px;
+	height: 95vh;
+/* 	border-bottom: 1px solid rgb(213, 43, 44); */
+}
+
+.main_wrap {
+  width: 1720px;
+  height: 92vh;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  align-content: center;
+/*   border-bottom: 1px solid rgb(200, 200, 200); */
+/*   border-bottom: 1px solid rgb(213, 43, 44); */
+  border-bottom: 1px solid rgb(89, 89, 89);
+}
+
+#alone {
+/* 	position: absolute; */
+	float: right;
+	padding-top: 25px;
+  right: 100px;
+  margin: 15px 0 10px 0;
+  font-size: 40px;
+  /* font-weight: 800; */
+  /* font-family: "Nunito Sans", sans-serif; */
+  font-family: "Ramabhadra", sans-serif;
+/*   color: rgba(213, 43, 44, 1); */
+  color: rgba(0, 0, 0, 0.8);
+}
+
+main > img {
+  margin: 0 auto;
+  width: 1720px;
+  /* width: 1200px; */
+  height: auto;
+}
+
+/*
+----------------------------------
+    article
+----------------------------------
+*/
+article {
+/* 	position: relative; */
+	width:1720px;
+	height: 500px;
+	margin: 0 auto;
+	top: 3vh;
+}
+
+.article-wrap {
+  width: 1720px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+/*
+----------------------------------
+  section
+----------------------------------
+*/
+section.main-section {
+	position: relative;
+	width: 1720px;
+	margin: 0 auto;
+	border-bottom: 1px solid rgb(89, 89, 89);
+}
+
+.section-wrap {
+	width: 1720px;
+	height: 35vh;
+	margin: 0 auto;
+	padding-top: 120px;
+	font-family: "Noto Sans KR", sans-serif;
+	font-weight: 600;
+  color: rgb(64, 64, 64);
+}
+
+.main-title {
+	font-size: 30px;
+}
+.main-article {
+	font-size: 24px;
+}
+.main-from {
+	font-weight: 300;
+	font-size: 12px;
+	color: rgb(140, 140, 140);
+}
+
+
+/*
+----------------------------------
+  footer
+----------------------------------
+*/
+.footer {
+	position: absolute;
+	width: 1720px;
+	height: 10vh;
+	margin: 0 auto;
+	margin-top: 10px;
+	top: 1950px;
+	left: 100px;
+}

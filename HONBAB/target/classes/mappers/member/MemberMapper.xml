@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mabits.org/dtd/mybatis-3-mapper.dtd">
+	
+<!-- 
+CREATE TABLE MEMBER(
+USER_NO NUMBER(10) NOT NULL,
+ID VARCHAR2(15) PRIMARY KEY,
+PW VARCHAR2(20) NOT NULL,
+NAME VARCHAR2(20) NOT NULL,
+NICKNAME VARCHAR2(25) NOT NULL,
+TEL VARCHAR2(13) NOT NULL,
+REGION VARCHAR2(30) NOT NULL,
+GENDER VARCHAR2(1) NOT NULL,
+EMAIL VARCHAR2(30) NOT NULL,
+JOIN_DATE DATE DEFAULT SYSDATE NOT NULL
+);
+
+CREATE SEQUENCE MEMBER_SEQ 
+INCREMENT BY 1 
+START WITH 1 
+MAXVALUE 1000
+NOCYCLE
+NOCACHE;
+	 -->
+	 
+<mapper namespace="com.web.honbab.mybatis.MemberMapper">
+
+	<resultMap type="com.web.honbab.dto.MemberDTO" id="member">
+		<id property = "id" column="ID"></id>
+		<result property = "pw" column="PW"></result>
+		<result property = "name" column="NAME"></result>
+		<result property = "nickName" column="NICKNAME"></result>
+		<result property = "tel" column="TEL"></result>
+		<result property = "gender" column="GENDER"></result>
+		<result property = "email" column="EMAIL"></result>
+		<result property = "joinDate" column="JOIN_DATE"></result>
+		<result property = "userNo" column="USER_NO"></result>
+	</resultMap>
+		
+	<insert id="joinMember">
+		INSERT INTO MEMBER (USER_NO, ID, PW, NAME, NICKNAME, TEL, GENDER, EMAIL) 
+		VALUES(MEMBER_SEQ.NEXTVAL, #{id}, #{pw}, #{name}, #{nickName}, #{tel}, #{gender}, #{email})
+	</insert>
+	
+	<select id="idChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE ID=#{id}
+	</select>
+
+	<select id="nickNameChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE NICKNAME=#{nickName}
+	</select>
+
+	<select id="emailChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE EMAIL=#{email}
+	</select>
+	
+	<select id="userChk" resultMap="member">
+		SELECT * FROM MEMBER 
+		WHERE ID=#{id}
+	</select>
+	
+	<select id="getMemberInfo" resultMap="member">
+		SELECT * FROM MEMBER 
+		WHERE ID=#{id}
+	</select>
+
+	<update id="modifyMemInfo">
+		UPDATE MEMBER SET 
+		PW=#{pw}, 
+		NAME=#{name}, 
+		NICKNAME=#{nickName}, 
+		TEL=#{tel}, 
+		GENDER=#{gender}, 
+		EMAIL=#{email}
+<!-- 		JOIN_DATE=#{joinDate} -->
+		WHERE ID=#{id}
+	</update>
+	
+	<delete id="dropMember">
+		DELETE FROM MEMBER 
+		WHERE ID=#{id}
+	</delete>
+		
+</mapper>
