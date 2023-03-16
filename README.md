@@ -5,6 +5,7 @@
 
 ## Requirements
 - Java 8
+- 
 - Naver 계정 (선택)
 
 ## How to use
