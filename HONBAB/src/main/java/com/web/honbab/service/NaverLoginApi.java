@@ -1,4 +1,4 @@
-package com.web.honbab.api;
+package com.web.honbab.service;
 
 import com.github.scribejava.core.builder.api.DefaultApi20;
 

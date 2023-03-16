@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.web.honbab.dto.MemberDTO;
@@ -40,69 +41,70 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 	}
 	
 	@Override
-	public int idChk(MemberDTO member) throws Exception {
-		int result = mapper.idChk(member);
+	public int idChk(MemberDTO id) throws Exception {
+		int result = mapper.idChk(id);
 		return result;
 	}
 
 	@Override
-	public int nickNameChk(MemberDTO member) throws Exception {
-		int result = mapper.nickNameChk(member);
+	public int nickNameChk(MemberDTO nickName) throws Exception {
+		int result = mapper.nickNameChk(nickName);
 		return result;
 	}
 
 	@Override
-	public int emailChk(MemberDTO member) throws Exception {
-		int result = mapper.emailChk(member);
+	public int emailChk(MemberDTO email) throws Exception {
+		int result = mapper.emailChk(email);
 		return result;
 	}
 
-	@Override
-	public int joinNaver(MemberDTO member, HttpServletRequest request) throws IOException, ParseException {
-	    HttpSession session = request.getSession();
-	    String code = request.getParameter("code");
-	    String state = request.getParameter("state");
-	    
-		OAuth2AccessToken oauthToken;
-		oauthToken = naverLoginBO.getAccessToken(session, code, state);
-		apiResult = naverLoginBO.getUserProfile(oauthToken);
-		
-		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObj;
-		
-		jsonObj = (JSONObject) jsonParser.parse(apiResult);
-		JSONObject responseObj = (JSONObject) jsonObj.get("response");
-		
-		String id = (String) responseObj.get("id").toString();
-		String name = (String) responseObj.get("name");
-		String nickName = (String) responseObj.get("nickname");
-		String tel = (String) responseObj.get("mobile");
-		String gender = (String) responseObj.get("gender");
-		String email = (String) responseObj.get("email");
-		
-		session.setAttribute(LOGINUSER, id);
-		
-		session.setAttribute("signIn", apiResult);
-		session.setAttribute("email", email);
-		session.setAttribute("name", name);
-		session.setAttribute("nickName", nickName);
-		
-		member = new MemberDTO();
-		member.setId(id);
-		member.setPw("naver-login");
-		member.setName(name);
-		member.setNickName(nickName);
-		member.setTel(tel);
-		member.setGender(gender);
-		member.setEmail(email);
-		
-		try {
-			return mapper.joinMember(member);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return 0;
-		}
-	}
+//	@Override
+//	public String naverLogin(HttpServletRequest request) throws IOException, ParseException {
+//	    HttpSession session = request.getSession();
+//	    String code = request.getParameter("code");
+//	    String state = request.getParameter("state");
+//	    
+//		OAuth2AccessToken oauthToken;
+//		oauthToken = naverLoginBO.getAccessToken(session, code, state);
+//		apiResult = naverLoginBO.getUserProfile(oauthToken);
+//		
+//		JSONParser jsonParser = new JSONParser();
+//		JSONObject jsonObj;
+//		
+//		jsonObj = (JSONObject) jsonParser.parse(apiResult);
+//		JSONObject responseObj = (JSONObject) jsonObj.get("response");
+//		
+//		String naverId = (String) responseObj.get("id").toString();
+//		String name = (String) responseObj.get("name");
+//		String nickName = (String) responseObj.get("nickname");
+//		String tel = (String) responseObj.get("mobile");
+//		String gender = (String) responseObj.get("gender");
+//		String email = (String) responseObj.get("email");
+//		
+//		session.setAttribute("signIn", apiResult);
+//		
+////		MemberDTO member = new MemberDTO();
+////		int userChk = 0;
+////		try {
+////			userChk = idChk(member.getId());
+////		} catch (Exception e) {
+////			e.printStackTrace();
+////		}
+////			member.setId(naverId);
+////			member.setPw("naver-login");
+////			member.setName(name);
+////			member.setNickName(nickName);
+////			member.setTel(tel);
+////			member.setGender(gender);
+////			member.setEmail(email);
+//		
+//		try {
+////			return mapper.joinMember(member);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return 0;
+//		}
+//	}
 	
 	@Override
 	public int userChk(HttpServletRequest request) {
@@ -133,9 +135,9 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 		member.setId(mul.getParameter("id"));
 		member.setPw(mul.getParameter("pw"));
 		member.setName(mul.getParameter("name"));
+		member.setNickName(mul.getParameter("nickName"));
 		member.setEmail(mul.getParameter("email"));
 		member.setGender(mul.getParameter("gender"));
-		member.setNickName(mul.getParameter("nickName"));
 		member.setTel(mul.getParameter("tel"));
 		
 		int result = 0;

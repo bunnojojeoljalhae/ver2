@@ -13,13 +13,13 @@ import com.github.scribejava.core.model.OAuthRequest;
 import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
-import com.web.honbab.api.NaverLoginApi;
 
 public class NaverLoginBO {
 	
 	public final static String CLIENT_ID = "LrTCwPDTXn77SwFIEJd9";
 	public final static String CLIENT_SECRET = "JQDeg0TxZy";
-	public final static String REDIRECT_URI = "http://localhost:8080/honbab/naver_login/callback";
+	public final static String REDIRECT_URI = "http://localhost:8080/honbab/member/callback";
+//	public final static String REDIRECT_URI = "http://localhost:8080/honbab/naver_login/callback";
 	public final static String SESSION_STATE = "oauth_state";
 	public final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";
 	public final static String GET_USER_PROFILE = "https://openapi.naver.com/v1/nid/getUserProfile";

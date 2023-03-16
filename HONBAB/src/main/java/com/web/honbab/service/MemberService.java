@@ -3,10 +3,12 @@ package com.web.honbab.service;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.honbab.dto.MemberDTO;
 
@@ -14,13 +16,13 @@ public interface MemberService {
 	
 	public int joinMember(MemberDTO member);
 	
-	public int idChk(MemberDTO member) throws Exception;
+	public int idChk(MemberDTO id) throws Exception;
 
-	public int nickNameChk(MemberDTO member) throws Exception;
+	public int nickNameChk(MemberDTO nickName) throws Exception;
 
-	public int emailChk(MemberDTO member) throws Exception;
+	public int emailChk(MemberDTO email) throws Exception;
 
-	public int joinNaver(MemberDTO member, HttpServletRequest request) throws IOException, ParseException;
+//	public int naverLogin(HttpServletRequest request) throws IOException, ParseException;
 
 	public int userChk(HttpServletRequest request);
 	
