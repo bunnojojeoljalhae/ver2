@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.web.honbab.dto.MemberDTO;
 import com.web.honbab.service.ChallengeService;
 import com.web.honbab.service.MemberService;
@@ -49,15 +52,6 @@ public class MemberController implements MemberSession {
 		return "member/joinForm";
 	}
 
-	@RequestMapping(value = "/naver_login", method = {RequestMethod.GET, RequestMethod.POST})
-	public String joinNaverForm(Model model, HttpSession session) {
-		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		model.addAttribute("naverUrl", naverAuthUrl);
-		System.out.println(naverAuthUrl);
-		
-		return "member/loginForm";
-	}
-	
 	@RequestMapping("/joinMember")
 	public String joinMember(MemberDTO member) {
 		int result = ms.joinMember(member);
@@ -70,34 +64,25 @@ public class MemberController implements MemberSession {
 	// 이메일 중복 체크
 	@ResponseBody
 	@RequestMapping(value="/idChk", method = RequestMethod.POST)
-	public int idChk(MemberDTO member) throws Exception {
-	  int result = ms.idChk(member);
+	public int idChk(MemberDTO id) throws Exception {
+	  int result = ms.idChk(id);
 	  return result;
 	}
 
 	// 닉네임 중복 체크
 	@ResponseBody
 	@RequestMapping(value="/nickNameChk", method = RequestMethod.POST)
-	public int nickNameChk(MemberDTO member) throws Exception {
-	  int result = ms.nickNameChk(member);
+	public int nickNameChk(MemberDTO nickName) throws Exception {
+	  int result = ms.nickNameChk(nickName);
 	  return result;
 	}
 
 	// 이메일 중복 체크
 	@ResponseBody
 	@RequestMapping(value="/emailChk", method = RequestMethod.POST)
-	public int emailChk(MemberDTO member) throws Exception {
-		int result = ms.emailChk(member);
+	public int emailChk(MemberDTO email) throws Exception {
+		int result = ms.emailChk(email);
 		return result;
-	}
-
-	@RequestMapping(value = "/naver_login/callback", method = { RequestMethod.GET, RequestMethod.POST })
-	public String joinNaver(MemberDTO member, HttpServletRequest request) throws Exception {
-		int result = ms.joinNaver(member, request);
-		if(result == 1) {
-			return "redirect:login";
-		}
-		return "redirect:join";
 	}
 
 	//------------------------------------------
@@ -123,6 +108,39 @@ public class MemberController implements MemberSession {
 		session.setAttribute(LOGINUSER, id);
 		rs.reviewBestList(model);
 		cs.challengeBestList(model);
+		return "home";
+	}
+	
+	public void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+		this.naverLoginBO = naverLoginBO;
+	}
+	
+	@RequestMapping(value = "/naver_login", method = {RequestMethod.GET, RequestMethod.POST})
+	public String NaverLoginForm(Model model, HttpSession session) {
+		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+		model.addAttribute("naverUrl", naverAuthUrl);
+		System.out.println(naverAuthUrl);
+		return "member/loginForm";
+	}
+
+	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
+	public String naverLogin(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws Exception {
+		OAuth2AccessToken oauthToken;
+		oauthToken = naverLoginBO.getAccessToken(session, code, state);
+		apiResult = naverLoginBO.getUserProfile(oauthToken);
+		
+		JSONParser parser = new JSONParser();
+		Object obj = parser.parse(apiResult);
+		
+		JSONObject jsonObj = (JSONObject) obj;
+		JSONObject jsonResObj = (JSONObject) jsonObj.get("response");
+		String nickName = (String) jsonResObj.get("nickname");
+		String id = (String) jsonResObj.get("id");
+		
+		session.setAttribute(LOGINUSER, id);
+		session.setAttribute(LOGINNICK, nickName);
+		model.addAttribute("result", apiResult);
+		
 		return "home";
 	}
 
@@ -169,10 +187,10 @@ public class MemberController implements MemberSession {
 		out.println(message);
 	}
 
-	@RequestMapping("/callback")
-	public String callback() {
-		return "redirect:join";
-	}
+//	@RequestMapping("/callback")
+//	public String callback() {
+//		return "redirect:join";
+//	}
 
 
 }

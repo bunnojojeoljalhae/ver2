@@ -9,14 +9,12 @@ public interface MemberMapper {
 	
 	public int joinMember(MemberDTO member);
 	
-	public int idChk(MemberDTO member) throws Exception;
+	public int idChk(MemberDTO id) throws Exception;
 
-	public int nickNameChk(MemberDTO member) throws Exception;
+	public int nickNameChk(MemberDTO nickName) throws Exception;
 
-	public int emailChk(MemberDTO member) throws Exception;
+	public int emailChk(MemberDTO email) throws Exception;
 
-	public int joinNaver(MemberDTO member);
-	
 	public MemberDTO userChk(String id);
 	
 	public ArrayList<MemberDTO> memberInfo();
